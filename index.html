@@ -36,14 +36,21 @@ body{
                     <button id="startGame" class="btn btn-primary">Start</button>
             </div>
     </div>
-    <div id="timeRemaining">
+    <div id="timeRemaining"></div>
+    <div id="formQuiz"></div>
+    <div id="formSubmit">
 
-    </div>
-    <div id="formQuiz">
     </div>
 </body>
 <script type="text/javascript">
 
+
+var userPick;
+var correctAnswer;
+var wrongAnswer;
+var timeDisplay;
+var counter = 10;
+var intervalID;
 var questions = [{
         question: "What was is Shaggy's real first name'?",
         choices: ["Michael", "Johnathan", "Norville", "Elmer"],
@@ -99,9 +106,14 @@ var questions = [{
 console.log("Questions length ", questions.length);
 
 $(document).ready(function(){
+
+
+
     $("#startGame").click(function(){
         writeQuestions();
         $("#startGame").hide();
+        writeSubmitButton();
+        intervalID = setInterval(decrement, 1000);
     });
 });
 
@@ -110,24 +122,36 @@ function writeQuestions()
 for ( var i = 0; i <questions.length; i++)
 {
     $("#formQuiz").append(questions[i].question + "</br></br>");
-    console.log("Length of choices array. "+ questions[i].choices.length);
-    console.log(questions[i].choices[0]);
-    console.log(questions[i].choices[1]);
-    console.log(questions[i].choices[2]);
-    console.log(questions[i].choices[3]);
+    //console.log("Length of choices array. "+ questions[i].choices.length);
+    //console.log(questions[i].choices[0]);
+    //console.log(questions[i].choices[1]);
+    //console.log(questions[i].choices[2]);
+    //console.log(questions[i].choices[3]);
     for ( var x = 0; x < questions[i].choices.length; x++)
     {
         $("#formQuiz").append("<label class='radio-inline'><input type='radio' name='optradio" + i +"'>" + questions[i].choices[x] +"</label></br><br>");
     }
 }
+}
 
-
+function writeSubmitButton(){
+    $("#formSubmit").append("<button id='submitQuiz' class='btn btn-primary'>Submit</button>");
 }
 
 
-
-
-
+    function decrement() {
+      //  Decrease number by one.
+      counter--;
+      //  Show the number in the #show-number tag.
+      $("#timeRemaining").html("<h2>" + counter + " seconds remaining.</h2>");
+      //  Once number hits zero...
+      if (counter === 0) {
+        alert("Time Up! Do more logic to tally the quiz score");
+        clearInterval(intervalId);
+        //  Alert the user that time is up.
+        
+      }
+}
 
 </script>
 </html>
