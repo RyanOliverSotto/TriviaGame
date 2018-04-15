@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta author="Ryan Oliver Sotto">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <title>Scooby Trivia</title>
+
+    <style>
+jumbotron, h1, p {
+    text-align: center;
+}
+
+body{
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Scooby Do, Where Are You?</h1>
+        <p>A Scooby Do Triva Game</p>
+    </div>
+    <div id="startLanding">
+            <div style="text-align: center">
+                    <button id="startGame" class="btn btn-primary">Start</button>
+            </div>
+    </div>
+    <div id="timeRemaining">
+
+    </div>
+    <div id="formQuiz">
+    </div>
+</body>
+<script type="text/javascript">
+
+var questions = [{
+        question: "What was is Shaggy's real first name'?",
+        choices: ["Michael", "Johnathan", "Norville", "Elmer"],
+        answer: 2
+    },
+    {
+        question: "What breed of dog is Scooby Doo?",
+        choices: ["Great Dane", "Irish Wolfhound", "German Shepard", "Bloodhound"],
+        answer: 0
+    },
+    {
+        question: "Which of the Scooby Doo gang has the catchphrase JINKIES?'",
+        choices: ["Fred", "Velma", "Daphne", "Scooby Doo"],
+        answer: 1
+    },
+    {
+        question: "What is the last name of Fred?",
+        choices: ["Johnson", "Smith", "Jones", "Appleton"],
+        answer: 2
+    },
+    {
+        question: "What is the name of the van the Scooby gang travels with?",
+        choices: ["Mystery Busters", "Mystery Machine", "Ghost Adventures", "BloodHound Gang"],
+        answer: 1
+    },
+    {
+        question: "In what year did Scooby Doo debut on national television?",
+        choices: ["1972", "1965", "1969", "1970"],
+        answer: 3
+    },
+    {
+        question: "Which television network was the first to air Scooby Doo?",
+        choices: ["CBS", "ABC", "NBC", "PBS"],
+        answer: 0
+    },
+    {
+        question: "1985s Thirteen Ghosts of Scooby Doo featured which new character?",
+        choices: ["Bill the Cat", "Scrappy Doo", "Scooby Dee", "Vincent Van Ghoul"],
+        answer: 3
+    },
+    {
+        question: "What is the full name of Scooby Doo?",
+        choices: ["Prince Scooby", "Scooby Dooby Do", "Scoobert", "Scooby Rex"],
+        answer: 2
+    },
+    {
+        question: "What was the catchphrase of Scrappy Doo?",
+        choices: ["Puppy Power", "Lemme at him!", "Clobbering Time!", "Paw Paw Paw Punch!"],
+        answer: 0
+    }
+];
+
+console.log("Questions length ", questions.length);
+
+$(document).ready(function(){
+    $("#startGame").click(function(){
+        writeQuestions();
+        $("#startGame").hide();
+    });
+});
+
+function writeQuestions()
+{
+for ( var i = 0; i <questions.length; i++)
+{
+    $("#formQuiz").append(questions[i].question + "</br></br>");
+    console.log("Length of choices array. "+ questions[i].choices.length);
+    console.log(questions[i].choices[0]);
+    console.log(questions[i].choices[1]);
+    console.log(questions[i].choices[2]);
+    console.log(questions[i].choices[3]);
+    for ( var x = 0; x < questions[i].choices.length; x++)
+    {
+        $("#formQuiz").append("<label class='radio-inline'><input type='radio' name='optradio" + i +"'>" + questions[i].choices[x] +"</label></br><br>");
+    }
+}
+
+
+}
+
+
+
+
+
+
+</script>
+</html>
