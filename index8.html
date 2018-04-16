@@ -108,6 +108,10 @@
     }
     ];
 
+    for ( var i = 0; i < questions.length; i++){
+        userPick[i] = null;
+    }
+
     //console.log("Questions length ", questions.length);
 
     $(document).ready(function () {
@@ -185,7 +189,9 @@
                 console.log("Name: " + this.name);
                 userPick[9] = (this.value);
             });*/
-            
+            $("input").click(function(){
+                userPick[this.name]=this.value;
+            });
 
 
         });
