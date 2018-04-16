@@ -48,7 +48,8 @@
 
 
 
-    var userPick = [null, null, null, null, null, null, null, null, null, null];
+    //var userPick = [null, null, null, null, null, null, null, null, null, null];
+    var userPick = [];
     var correctAnswers = 0;
     var wrongAnswers = 0;
     var missedAnswers = 0;
@@ -124,52 +125,52 @@
 
             //See if you can get this to work the WET way
             //I AM HAVING A HARD TIME ACCESSING THE RADIO BUTTONS DYNAMICALLY
-            $("input[name=optradio0]:radio").click(function () {
+            $("input[name=0]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[0] = (this.value);
             });
-            $("input[name=optradio1]:radio").click(function () {
+            $("input[name=1]:radio").click(function () {
                 // alert("I was clicked!");
                 console.log(this.value);
                 userPick[1] = (this.value);
             });
-            $("input[name=optradio2]:radio").click(function () {
+            $("input[name=2]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[2] = (this.value);
             });
-            $("input[name=optradio3]:radio").click(function () {
+            $("input[name=3]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[3] = (this.value);
             });
-            $("input[name=optradio4]:radio").click(function () {
+            $("input[name=4]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[4] = (this.value);
             });
-            $("input[name=optradio5]:radio").click(function () {
+            $("input[name=5]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[5] = (this.value);
             });
-            $("input[name=optradio6]:radio").click(function () {
+            $("input[name=6]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[6] = (this.value);
             });
-            $("input[name=optradio7]:radio").click(function () {
+            $("input[name=7]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[7] = (this.value);
             });
-            $("input[name=optradio8]:radio").click(function () {
+            $("input[name=8]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[8] = (this.value);
             });
-            $("input[name=optradio9]:radio").click(function () {
+            $("input[name=9]:radio").click(function () {
                 //alert("I was clicked!");
                 console.log(this.value);
                 userPick[9] = (this.value);
@@ -190,7 +191,7 @@
             //console.log(questions[i].choices[3]);
             for (var x = 0; x < questions[i].choices.length; x++) {
                 //$("#formQuiz").append("<label class='radio-inline'><input type='radio' name='group" + i + "'>" + questions[i].choices[x] + "</label></br><br>");
-                $("#formQuiz").append("<label class='radio-inline'><input value='" + x + "' type='radio' name='optradio" + i + "'>" + questions[i].choices[x] + "</label><br/><br/>");
+                $("#formQuiz").append("<label class='radio-inline'><input value='" + x + "' type='radio' name='" + i + "'>" + questions[i].choices[x] + "</label><br/><br/>");
             }
         }
     }
@@ -219,7 +220,7 @@
         $("#submitQuiz").hide();
         //tallyResults();
         for (i = 0; i < questions.length; i++) {
-            console.log("Correct answer per radio group: " + questions[i].answer);
+            //console.log("Correct answer per radio group: " + questions[i].answer);
             if (questions[i].answer == userPick[i]) {
                 correctAnswers++;
             }
