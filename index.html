@@ -146,10 +146,13 @@ function writeSubmitButton(){
       $("#timeRemaining").html("<h2>" + counter + " seconds remaining.</h2>");
       //  Once number hits zero...
       if (counter === 0) {
-        alert("Time Up! Do more logic to tally the quiz score");
+        //  ...run the stop function.
         clearInterval(intervalId);
         //  Alert the user that time is up.
+        alert("Time Up!");
+        //Do additional logic
         
+    
       }
 }
 
