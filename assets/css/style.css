@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Creepster');
+/*
+font-family: 'Kaushan Script', cursive;
+font-family: 'Diplomata', cursive;
+*/
+
+body {
+    font-family: 'Creepster', cursive;
+    background-image: url("../images/Scooby-Doo-HD.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
+  }
+
+  .jumbotron{
+      background: rgba(0, 0, 0, .8);
+      color: darkorange;
+  }
+
+  h1{
+      text-align: center;
+      height: 50px;
+      margin: 10px 10px 10px 10px;
+  }
+
+  p{
+    text-align: center;
+    font-family: initial; 
+    padding-top: 15px;
+  }
+
+
+#timeRemaining, h2{
+    font-size: 55px;
+    color:  darkorange;
+    margin-bottom: 30px;
+}
+
+#formQuiz, #quizResults{
+    font-size: 20px;
+    color:  darkorange;
+    background: rgba(0, 0, 0, .8);
+}
+
+#submitQuiz, #startGame{
+    font-size: 25px;
+    padding: 20px 50px 20px 50px;
+}
