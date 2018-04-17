@@ -46,7 +46,7 @@ var correctAnswers = 0;
 var wrongAnswers = 0;
 var missedAnswers = 0;
 var timeDisplay;
-var counter = 60;
+var counter = 61;
 var intervalID;
 var questions = [{
     question: "What was is Shaggy's real first name?",
@@ -106,7 +106,7 @@ for ( var i = 0; i < questions.length; i++){
 
 //Optional sounds
 let audioClick = new Audio("assets/sounds/mouse_click.wav");
-
+let audioScooby = new Audio("http://www.jeremywrenn.com/Fun Sounds/scoobhuh.wav");
 //console.log("Questions length ", questions.length);
 
 $(document).ready(function () {
@@ -125,7 +125,7 @@ $(document).ready(function () {
         });
 
         $("input").click(function(){
-            audioClick.play();
+            audioScooby.play();
             userPick[this.name]=this.value;
         });
 
@@ -153,7 +153,6 @@ function decrement() {
     $("#timeRemaining").html("<h2><mark>" + counter + " seconds remaining.</mark></h2>");
     if (counter === 0) {
         alert("Time Up!");
-        stop();
         //Do additional logic and process the quiz results
         showResults();
     }
@@ -178,8 +177,6 @@ function showResults() {
     $("#quizResults").append("<p>Correct Answers: " + correctAnswers + "</p>");
     $("#quizResults").append("<p>Incorrect Answers: " + wrongAnswers + "</p>");
     $("#quizResults").append("<p>Unanswered: " + missedAnswers + "</p>");
-}
-
-function stop(){
     clearInterval(intervalID);
 }
+
