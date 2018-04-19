@@ -30,7 +30,9 @@ body {
     font-family: initial; 
     padding-top: 15px;
   }
-
+.radio-inline{
+    font-size: 20px;
+}
 
 #timeRemaining, h2{
     font-size: 55px;
@@ -39,12 +41,19 @@ body {
 }
 
 #formQuiz, #quizResults{
-    font-size: 20px;
+    font-size: 30px;
     color:  darkorange;
     background: rgba(0, 0, 0, .8);
 }
 
 #submitQuiz, #startGame{
     font-size: 25px;
-    padding: 20px 50px 20px 50px;
+    padding: 30px 100px 30px 100px;
+}
+
+.mark, mark {
+    padding: .2em;
+    background: rgba(0, 0, 0, .8);
+    color: red;
+
 }

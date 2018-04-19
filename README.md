@@ -18,5 +18,9 @@ html
 css
 bootstrap 3
 
+
+#Outstanding issues
+Need to create a button and a function to restart the game.
+
 # Author
 Ryan Oliver Sotto 
