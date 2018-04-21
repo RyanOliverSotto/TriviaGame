@@ -41,7 +41,7 @@ Question 1 array
 Radio Buttons 2 Array
 Right Answer
 */
-let userPick = [];
+let userPick = []; //Array to hold the user choices, will populate with null in a for loop later
 let correctAnswers = 0;
 let wrongAnswers = 0;
 let missedAnswers = 0;
@@ -76,7 +76,7 @@ let questions = [{
 {
     question: "In what year did Scooby Doo debut on national television?",
     choices: ["1972", "1965", "1969", "1970"],
-    answer: 3
+    answer: 2
 },
 {
     question: "Which television network was the first to air Scooby Doo?",
@@ -97,20 +97,53 @@ let questions = [{
     question: "What was the catchphrase of Scrappy Doo?",
     choices: ["Puppy Power", "Lemme at him!", "Clobbering Time!", "Paw Paw Paw Punch!"],
     answer: 0
+},
+{
+    question: "Who owns the Mystery Machine?",
+    choices: ["Fred's father", "Shaggy's aunt", "Daphne's father", "Velma's family business"],
+    answer: 2
+},
+{
+    question: "Shaggy took part in which activity at his high school?",
+    choices: ["Tennis", "Track", "Wrestling", "Debate Club"],
+    answer: 1
+},
+{
+    question: "What was the name of the first episode of 'Scooby-Doo, Where Are You!' ?",
+    choices: ["Ghost of a Dog", "What a Night for a Knight", "Mystery at the Museum", "Case of the Ghastly Ghoul"],
+    answer: 1
+},
+{
+    question: "Name Scooby's brother who lived out West and solved crimes with Scrappy-Doo on a spinoff show.",
+    choices: ["Yabba Doo", "Scooby Bro", "Sheriff Doo", "Lone Star Doo"],
+    answer: 0
+},
+{
+    question: "True or False: The inside joke of Scooby and Shaggy being under the inlfuence of marijuana was created by the orginal writers in the late 1960s.",
+    choices: ["TRUE", "FALSE"],
+    answer: 1
+},
+{
+    question: "True or False: Shaggy and Scooby-Doo are the only two characters to appear in every incarnation of the show.",
+    choices: ["TRUE", "FALSE"],
+    answer: 0
 }
 ];
 //To capture the missed responses, populate the userPick array with all nulls equal to the length of the questions object
 for (var i = 0; i < questions.length; i++) {
     userPick[i] = null;
 }
-
 //Optional sounds
 let audioClick = new Audio("assets/sounds/mouse_click.wav");
+let audioScooby = new Audio("http://www.jeremywrenn.com/Fun Sounds/scoobhuh.wav");
+let audioDash = new Audio("http://putative.typepad.com/files/bongo-feet-and-zip-1.wav");
+let audioLaugh = new Audio("http://home.swipnet.se/~w-39504/wav/scooblaf.wav");
 
 //Quiz starts here with ready function
 $(document).ready(function () {
+
     $("#startGame").click(function () {
-        audioClick.play();
+        audioDash.play();
         //Attach the setInterval object to a variable so that we can stop it later
         intervalID = setInterval(decrement, 1000);
         //Use jQuery to call the function to write the questions to the html
@@ -120,7 +153,7 @@ $(document).ready(function () {
 
         $("#submitQuiz").click(function () {
             //alert("I was clicked!");
-            audioClick.play();
+            audioLaugh.play();
             showResults();
         });
         //This is the listener that will record the function that tracks what the user has clicked
@@ -130,21 +163,21 @@ $(document).ready(function () {
             audioClick.play();
             userPick[this.name] = this.value;
         });
-
-
     });
 });
 
 //Use a nested for loop to go through each question and each radio button option and write to page
 function writeQuestions() {
     for (var i = 0; i < questions.length; i++) {
-        $("#formQuiz").append(questions[i].question + "</br></br>");
+        $("#formQuiz").append(questions[i].question + "</br>");
+        //From within the first loop, write out the radio option buttons and assign them values and names of x and i respectively for later evaluation
         for (var x = 0; x < questions[i].choices.length; x++) {
-            $("#formQuiz").append("<label class='radio-inline'><input value='" + x + "' type='radio' name='" + i + "'>" + questions[i].choices[x] + "</label></br></br>");
+            $("#formQuiz").append("<label class='radio-inline'><input value='" + x + "' type='radio' name='" + i + "'>" + questions[i].choices[x] + "</label>");
         }
+        $("#formQuiz").append("<br/><br/>");
     }
 }
-//Write the button to submit the form 
+//Write the button to submit the form in the event the user does not want to wait for the timer expire event.
 function writeSubmitButton() {
     $("#formSubmit").append("<button id='submitQuiz' class='btn btn-primary btn-lg'>Submit</button>");
 }
@@ -154,32 +187,40 @@ function decrement() {
     counter--;
     $("#timeRemaining").html("<h2><mark>" + counter + " seconds remaining.</mark></h2>");
     if (counter === 0) {
-        alert("Time Up!");
+        //alert("Time Up!");
         //Do additional logic and process the quiz results
+        audioLaugh.play();
         showResults();
     }
 }
 //Write the results to the HTML
 function showResults() {
+    //Hide the questions | options | and submit button
     $("#formQuiz").hide();
     $("#timeRemaining").hide();
     $("#submitQuiz").hide();
+    //userPick[] was used to record the player responses 
     for (i = 0; i < questions.length; i++) {
+        // Note: === evaluated to NaN so == was required.
         if (questions[i].answer == userPick[i]) {
             correctAnswers++;
         }
+        // Unanswered questions
         else if (userPick[i] === null) {
             missedAnswers++;
         }
+        // Logic dictates the only other possible outcome is a wrong answer
         else {
             wrongAnswers++;
         }
     }
+    // Expreimenting with assigning an HTML id to a variable 
     let qR = $("#quizResults");
-    qR.append("<p>ALL DONE!</p>");
-    qR.append("<p>Correct Answers: " + correctAnswers + "</p>");
-    qR.append("<p>Incorrect Answers: " + wrongAnswers + "</p>");
-    qR.append("<p>Unanswered: " + missedAnswers + "</p>");
+    $(qR).append("<p>ALL DONE!</p>");
+    $(qR).append("<p>Correct Answers: " + correctAnswers + "</p>");
+    $(qR).append("<p>Incorrect Answers: " + wrongAnswers + "</p>");
+    $(qR).append("<p>Unanswered: " + missedAnswers + "</p>");
+    //You must clear intervalID or it will repeat
     clearInterval(intervalID);
 }
 

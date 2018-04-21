@@ -49,6 +49,7 @@ body {
 #submitQuiz, #startGame{
     font-size: 25px;
     padding: 30px 100px 30px 100px;
+    margin: 10px 0px 10px 0px;
 }
 
 .mark, mark {

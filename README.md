@@ -16,11 +16,13 @@ Don't forget to include a countdown timer.
 javascript
 html
 css
-bootstrap 3
-
+bootstrap
+jQuery
 
 #Outstanding issues
-Need to create a button and a function to restart the game.
+Optional :Reset button but that is not in the project requirements and is goldplating.
 
 # Author
 Ryan Oliver Sotto 
+
+# https://ryanoliversotto.github.io/TriviaGame/
